@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Message Board</title>
+</head>
+
+<body>
+  <%- include('navbar') %>
+    <main>
+      <h1>Mini Message Board</h1>
+      <h2>Messages:</h2>
+      <ul>
+        <% messages.forEach(function(message) { %>
+          <li>
+            <%= message.text %> - <small>
+                <%= message.added %>
+              </small> by <%= message.user %>
+          </li>
+          <% }) %>
+    </main>
+</body>
+
+</html>
