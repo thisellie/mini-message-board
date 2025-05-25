@@ -5,19 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mini Message Board</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
   <%- include('navbar') %>
     <main>
-      <h1>Mini Message Board</h1>
-      <h2>Messages:</h2>
+      <h3>Messages:</h3>
       <ul>
         <% messages.forEach(function(message) { %>
           <li>
-            <%= message.text %> - <small>
-                <%= message.added %>
-              </small> by <%= message.user %>
+            <%= message.text %> (<%= message.added %>) by <%= message.user %>
           </li>
           <% }) %>
     </main>
