@@ -1,17 +1,7 @@
-const messages = [
-  {
-    text: 'Hi there!',
-    user: 'Amando',
-    added: new Date().toLocaleDateString(),
-  },
-  {
-    text: 'Hello World!',
-    user: 'Charles',
-    added: new Date().toLocaleDateString(),
-  },
-]
+const query = require('../db/queries')
 
-exports.index = (req, res) => {
+exports.index = async (req, res) => {
+  const messages = await query.getMessages()
   res.render('index', { messages })
 }
 
@@ -19,8 +9,8 @@ exports.new = (req, res) => {
   res.render('form')
 }
 
-exports.create = (req, res) => {
-  const { user, text } = req.body
-  messages.push({ user, text, added: new Date() })
+exports.create = async (req, res) => {
+  const { username, text } = req.body
+  await query.addMessage(text, username)
   res.redirect('/')
 }
